@@ -5,12 +5,17 @@ namespace StrUtil
 {
 	std::vector<std::string> split(const std::string &str, char szDelim)
 	{
-		std::stringstream ss(str);
-		std::string strItem;
-		std::vector<std::string> elemsRet;
-		while (std::getline(ss, strItem, szDelim))
+		std::vector<std::string> elemsRet = {""};
+		for (char c : str) 
 		{
-			elemsRet.emplace_back(strItem);
+			if (c == szDelim)
+			{
+				elemsRet.emplace_back();
+			}
+			else 
+			{
+				elemsRet.back() += c;
+			}
 		}
 		return elemsRet;
 	}
